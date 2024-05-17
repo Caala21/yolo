@@ -6,7 +6,7 @@ services:
       context: ./client 
       dockerfile: Dockerfile
     container_name: client-container1
-    command: "npm start"
+    command: "npm docker-start"
     ports:
       - "3000:3000"
     volumes:
@@ -18,7 +18,10 @@ services:
     image: back21/client:v1.1.0
 
   backend:
--23,6 +25,9 @@ services:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend-container1
     command: "npm start"
     ports:
       - "5000:5000"
@@ -28,25 +31,28 @@ services:
     volumes:
       - "./backend:/var/www/backend"
     networks:
-    32,16 +37,24 @@ services:
-      yolo.db:
+      - yolo_net
+    image: back21/backend:v1.1.0
+
+  yolo.db:
     image: mongo:latest
     container_name: yolo_db
-   
-environment:
+    environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password 
       MONGO_INITDB_DATABASE: local 
-ports:
+    ports:
       - "27018:27017"
-   
-volumes:
+    volumes:
       - mongo-data:/data/db
-networks:
-      - yolo_net
- 
-yolo_net:
-    driver: bridge 
-mongo-data:  
-    driver: local  
 
+    networks:
+      - yolo_net
+
+networks:
+  yolo_net:
+    driver: bridge
+
+volumes:  
+  mongo-data:  
+    driver: local  
