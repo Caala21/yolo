@@ -3,16 +3,16 @@ EQUIREMENTS
  Install vagrant
  Install docker
  Install virtualbox
-  TO Do
+  To Do
 After installation in the root of the project create a file called vagrantfile(touch Vagrant)
 COnfigure it as follows:
 This Vagrantfile sets up a virtual machine (VM) using the Ubuntu 20.04 box provided by "geerlingguy." It forwards two ports from the guest machine to the host machine: port 3000 on the guest to port 4000 on the host, and port 5000 on the guest to port 6000 on the host.
 You can still config it to use the same ports on the host *If the ports have no other processes running on them*
-Additionally, it provisions the VM using Ansible, a configuration management tool. It specifies a playbook named "yolo_playbook.yaml" to run during provisioning, which likely contains tasks to set up and configure software on the VM. The provisioner is set to be verbose with "vv," meaning it will provide detailed output during provisioning.
+Additionally, it provisions the VM using Ansible, a configuration management tool. It specifies a playbook named "yolo_2 playbook.yaml" to run during provisioning, which likely contains tasks to set up and configure software on the VM. The provisioner is set to be verbose with "vv," meaning it will provide detailed output during provisioning.
  You can opt to create an ansible playbook or an ansible directory then within it create a playbook in which my case I just created an ansible playbook within it config it as you would like it run in my case I configured it as follows:
-  This Ansible playbook is designed to automate the setup of a development environment for a project called "yolo." It performs various tasks sequentially on the local machine (specified by connection: local) as the user "manasseh" with sudo privileges (become: true).
+  This Ansible playbook is designed to automate the setup of a development environment for a project called "yolo." It performs various tasks sequentially on the local machine (specified by connection: local) as the user "back21" with sudo privileges (become: true).
 
-Here's a breakdown of what each part does:
+Here is an informed breakdown of each part:
 hosts: all: Specifies that these tasks should be applied to all hosts defined in the inventory file (though in this case, it's just the local machine).
 gather_facts: false: Disables gathering of facts about the target system (not necessary for local setup).
 connection: local: Specifies that tasks should be executed on the local machine.
