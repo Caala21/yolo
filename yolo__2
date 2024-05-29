@@ -3,7 +3,7 @@
   connection: local
   become: true
   become_method: sudo
-  become_user: Caala
+  become_user: "/home/back21/yolo/backend"
   become_flags: '-H -S'
   roles:
     - clone-repo
@@ -22,7 +22,7 @@
 #       docker_image:
 #         name: client-image
 #         build: 
-#           path: "/home/caala/yolo/client"
+#           path: "/home/back21/yolo/client"
 #         source: build
 #     - name: Run client container
 #       docker_container:
@@ -35,7 +35,7 @@
 #       docker_image:
 #         name: backend-image
 #         build: 
-#           path: "/home/caala/yolo/backend"
+#           path: "/home/back21/yolo/backend"
 #         source: build
 #     - name: Run backend container
 #       docker_container:
