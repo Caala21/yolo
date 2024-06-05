@@ -1,0 +1,16 @@
+---
+# tasks file for backend-setup
+
+- name: Pull backend Docker image
+  community.docker.docker_image:
+    name: "{{ backend_image }}"
+    source: pull
+    state: present
+
+- name: Run backend container
+  community.docker.docker_container:
+    name: backend
+    image: "{{ backend_image }}"
+    ports:
+      - "8000:8000"
+    state: started
