@@ -1,7 +1,7 @@
 ---
 - name: Set up Vagrant VM with Docker and Web Application
   hosts: all
-  become: yes    
+  become: true  # Set become to true for root privileges
 
   vars_files:
     - vars/main.yml
