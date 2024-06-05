@@ -1,0 +1,17 @@
+---
+# tasks file for frontend-structures
+
+- name: Pull frontend Docker image
+  community.docker.docker_image:
+    name: "{{ frontend_image }}"
+    source: pull
+    state: present
+
+- name: Run frontend container
+  community.docker.docker_container:
+    name: frontend
+    image: "{{ frontend_image }}"
+    ports:
+      - "3000:3000"
+    state: started
+
