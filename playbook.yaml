@@ -1,15 +1,15 @@
 ---
 - name: Set up Vagrant VM with Docker and Web Application
   hosts: all
-  become: yes 
+  become: yes    
 
   vars_files:
     - vars/main.yml
 
   roles:
+    - backend-structures
+    - frontend-structures
     - common-tasks
-    - backend-structure
-    - frontend-structure
 
   tasks:
     - name: Clone the repository
