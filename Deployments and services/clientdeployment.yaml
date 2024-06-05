@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+      - name: client
+        image: back21/client:v1.0
+        ports:
+        - containerPort: 3000
+        resources: # Add resource limits here
+          limits:
+            cpu: "100m" # Example CPU limit
+            memory: "1Gi" # Example memory limit
