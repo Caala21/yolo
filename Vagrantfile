@@ -1,7 +1,10 @@
 Vagrant.configure("2") do |config|
-    config.vm.box = "ubuntu/focal64"
+    config.vm.box = "geerlingguy/ubuntu2004"
+
+    config.ssh.insert_key = false
    
-     config.vm.provision "ansible_local" do |ansible|
+     config.vm.provision "ansible" do |ansible|
+       ansible.verbose = "vv"
        ansible.playbook = "playbook.yml"
      end
    end
